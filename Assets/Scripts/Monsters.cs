@@ -64,7 +64,7 @@ public class Monsters : MonoBehaviour
         monsterList.Add(new Monster(1, "Spider", 30, 4, 1, 502, 25));
         monsterList.Add(new Monster(2, "Chulu", 200, 1000, 3, 502, 90));
         SetSelectedMonster(0);
-        bossList.Add(new Boss(0, "Huge Rat", 40, 1, 5));
+        bossList.Add(new Boss(0, "Huge Rat", 20, 0, 2));
         bossList.Add(new Boss(1, "Huge Spprider", 100, 5, 10));
         bossList.Add(new Boss(2, "Huge xaz1" , 1000, 50, 60));
         SetSelectedBoss(0);

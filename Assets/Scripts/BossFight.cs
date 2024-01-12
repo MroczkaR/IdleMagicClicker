@@ -98,7 +98,7 @@ public class BossFight : MonoBehaviour
             bossActualHp -= dealDamage;
             bossInfoTextAnim.Play("ClickingInfoTextAnim", 0 , 0f);
             BossDmgInfo("- " + dealDamage.ToString());
-            BossAtack();
+            StartCoroutine(BossCounterAtack());
 
         }
         if(bossActualHp <= 0)
@@ -137,7 +137,7 @@ public class BossFight : MonoBehaviour
         heroInfoTextAnim.Play("ClickingInfoTextAnim" , 0, 0f);
         heroInfoText.enabled = false;
         heroInfoTextAnim.enabled = false;
-        StopCoroutine(HeroInfoTextAnimation());
+        //StopCoroutine(HeroInfoTextAnimation());
     }
 
     IEnumerator BossInfoTextAnimation()
@@ -146,6 +146,12 @@ public class BossFight : MonoBehaviour
         bossInfoTextAnim.Play("ClickingInfoTextAnim" , 0, 0f);
         bossInfoText.enabled = false;
         bossInfoTextAnim.enabled = false;
-        StopCoroutine(BossInfoTextAnimation());
+        //StopCoroutine(BossInfoTextAnimation());
+    }
+
+    IEnumerator BossCounterAtack()
+    {
+        yield return new WaitForSeconds(0.5f);
+        BossAtack();
     }
 }

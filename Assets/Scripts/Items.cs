@@ -86,7 +86,7 @@ public class Items : MonoBehaviour
 
         //Wands -id- -name- -requiredLevel- -minDmgWand- -maxDmgWand- -sellPrice-
         wandsList.Add(new Wands(0, "Empty", 2, 2, 6, 0)); // Pusty
-        wandsList.Add(new Wands(1, "Poplar Wand", 0, 1, 1, 0)); //Topola
+        wandsList.Add(new Wands(1, "Poplar Wand", 0, 0, 1, 0)); //Topola
 
         //Robes
         robesList.Add(new Robes(101, "Rag", 2, 5, 1, 1)); // Szmata

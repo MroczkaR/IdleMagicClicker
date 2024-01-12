@@ -126,7 +126,7 @@ public class Clicker : MonoBehaviour
         clickingInfoTextAnim.Play("ClickingInfoTextAnim" , 0, 0f);
         clickingInfoText.enabled = false;
         clickingInfoTextAnim.enabled = false;
-        StopCoroutine(ClickingInfoTextAnimation());
+        //StopCoroutine(ClickingInfoTextAnimation());
     }
 
         private void AddDroppedItem(int itemId)
