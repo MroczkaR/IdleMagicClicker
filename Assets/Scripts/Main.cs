@@ -32,7 +32,12 @@ public class Main : MonoBehaviour
         UpdateBalance();
         UpdateHeroStats();
         MakeMonstersArray();
-        StartCoroutine(UpdateInventory());
+        if(panelSystem.GamePanel.activeSelf == true)
+        {
+            StartCoroutine(UpdateInventory());
+            Debug.Log("XX1");
+        }
+
     }
 
     public void UpdateBalance()
@@ -121,18 +126,18 @@ public class Main : MonoBehaviour
         //gameData.
         //Balances
 
-        gameData.coinsBalance = 50; // 0
+        gameData.coinsBalance = 0; // 0
         gameData.gemsBalance = 0;
 
-
+        gameData.storyTextNumber = 0;
 
 
         //Player
 
         gameData.playerLevel = 0;
         gameData.playerHealth = 10;
-        gameData.playerMinDmg = 10; // 0
-        gameData.playerMaxDmg = 11; // 0
+        gameData.playerMinDmg = 0; // 0
+        gameData.playerMaxDmg = 0; // 0
         gameData.playerExp = 0;
         gameData.playerMaxExp = 1;
         gameData.playerLearningPoints = 0;
@@ -152,6 +157,19 @@ public class Main : MonoBehaviour
         }
         gameData.equippedWand = 0;
         gameData.equippedRobe = 0;
+
+        // Spells
+
+        gameData.playerSkillLearningPoints = 0;
+        for(int i=0; i<6; i++)
+        {
+            gameData.usingSpell[i] = 0;
+        }
+
+        for(int i = 0; i < 21; i++)
+        {
+            gameData.skillLevel[i] = 0;
+        }
 
     }
 

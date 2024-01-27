@@ -11,6 +11,7 @@ public class InfoPanel : MonoBehaviour
     public Button equipButton;
     public Button removeButton;
     public Button sellButton;
+    public Button buyButton;
     public TMPro.TMP_Text nameText;
     public TMPro.TMP_Text text1InfoPanel;
     public TMPro.TMP_Text text2InfoPanel;
@@ -26,18 +27,35 @@ public class InfoPanel : MonoBehaviour
 
     public void UpdateInfoPanelTexts(int index, int inventory)
     {
-        if(inventory == 1)
+        if(inventory == 1) //Inventory and Hero Panel
         {
-            removeButton.gameObject.SetActive(false);
             sellButton.gameObject.SetActive(true);
             equipButton.gameObject.SetActive(true);
+            removeButton.gameObject.SetActive(false);
+            buyButton.gameObject.SetActive(false);
         }
 
-        if(inventory == 2)
+        if(inventory == 2) // Equipped
         {
             removeButton.gameObject.SetActive(true);
             sellButton.gameObject.SetActive(false);
             equipButton.gameObject.SetActive(false);
+            buyButton.gameObject.SetActive(false);
+        }
+
+        if(inventory == 3)  // Buy From Shop
+        {
+            buyButton.gameObject.SetActive(true);
+            removeButton.gameObject.SetActive(false);
+            sellButton.gameObject.SetActive(false);
+            equipButton.gameObject.SetActive(false);       
+        }
+        if(inventory == 4) // Inventory and Shop
+        {
+            sellButton.gameObject.SetActive(true);
+            equipButton.gameObject.SetActive(false);
+            buyButton.gameObject.SetActive(false);
+            removeButton.gameObject.SetActive(false);
         }
 
         MakeEmptyInfoTexts();
@@ -47,7 +65,15 @@ public class InfoPanel : MonoBehaviour
             nameText.text = items.selectedLoot.name;
             text1InfoPanel.text = items.selectedLoot.description.ToString();
             //text2InfoPanel.text = items.selectedLoot.
-            sellPriceText.text = "Sell Price : " + items.selectedLoot.sellPrice.ToString();
+            if(inventory == 3)
+            {
+                sellPriceText.text = "Buy Price : " + items.selectedLoot.buyPrice.ToString();
+            }
+            else
+            {
+                sellPriceText.text = "Sell Price : " + items.selectedLoot.sellPrice.ToString();
+            }
+
             equipButton.gameObject.SetActive(false);
         }
         else if(index > 100)
@@ -56,14 +82,28 @@ public class InfoPanel : MonoBehaviour
             text1InfoPanel.text = "Required Level : " + items.selectedRobe.requaredLevel.ToString();
             text2InfoPanel.text = "Deffence : " + items.selectedRobe.deffence.ToString();
             text3InfoPanel.text = "Vitality : " + items.selectedRobe.vitalityRobe.ToString();
-            sellPriceText.text = "Sell Price : " + items.selectedRobe.sellPrice.ToString();
+            if(inventory == 3)
+            {
+                sellPriceText.text = "Buy Price : " + items.selectedRobe.buyPrice.ToString();
+            }
+            else
+            {
+                sellPriceText.text = "Sell Price : " + items.selectedRobe.sellPrice.ToString();
+            }
         }
         else
         {
             nameText.text = items.selectedWand.name;
             text1InfoPanel.text = "Required Level : " + items.selectedWand.requaredLevel.ToString();
             text2InfoPanel.text = "Wand Damage : " + items.selectedWand.minDmgWand.ToString() + " - " + items.selectedWand.maxDmgWand.ToString();
-            sellPriceText.text = "Sell Price : " + items.selectedWand.sellPrice.ToString();
+            if(inventory == 3)
+            {
+                sellPriceText.text = "Buy Price : " + items.selectedWand.buyPrice.ToString();
+            }
+            else
+            {
+                sellPriceText.text = "Sell Price : " + items.selectedWand.sellPrice.ToString();
+            }
         }
 
     

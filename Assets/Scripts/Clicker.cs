@@ -13,6 +13,7 @@ public class Clicker : MonoBehaviour
     public Monsters monsters;
     public Equipment equipment;
     public Items items;
+    public GameStatistics gameStats;
     public Button clickButton;
     public TMPro.TMP_Text clickingInfoText;
 
@@ -70,6 +71,7 @@ public class Clicker : MonoBehaviour
         }
 
         main.UpdateMonsterHp(monsterActualHp, monsters.selectedMonster.maxHp);
+        gameStats.totalTaps ++;
     }
 
     public void MonsterInfo(string infoText)

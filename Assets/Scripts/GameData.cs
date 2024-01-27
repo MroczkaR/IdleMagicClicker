@@ -39,6 +39,14 @@ public class GameData : ScriptableObject
     public int equippedRobe = 0;
     public int[] slotsEq = new int [16];
 
+    // Spells
+
+    public int playerSkillLearningPoints = 0;
+    public int[] usingSpell = new int [6];
+    public int[] skillLevel = new int [21];
+
+    // Tutorial
+
     public int storyTextNumber = 0;
 
     public int GetBalance(string resourceName)

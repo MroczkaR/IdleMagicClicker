@@ -32,9 +32,11 @@ public class Equipment : MonoBehaviour
     
     public void Start()
     {
-        gameData.slotsEq[1] = 1;
         UpdateEquipment();
+        //UpdateEquipmentPublic();
     }
+
+    //public void UpdateEquipmentPublic() => UpdateEquipment();
 
 
     private void UpdateEquipment()
@@ -185,7 +187,10 @@ public class Equipment : MonoBehaviour
     private void UpdatedEquippedItem(int savedId)
     {
             gameData.slotsEq[slotIndex] = savedId;
-            panelSystem.CloseInfoPanel(); 
+            panelSystem.CloseInfoPanel();
+            panelSystem.CloseShopPanel();
+            panelSystem.OpenHeroPanel();
+            panelSystem.OpenEquipmentPanel(); 
             UpdateEquipment();
             main.UpdateHeroStats();
             story.CheckTutorialPanel();
@@ -205,6 +210,7 @@ public class Equipment : MonoBehaviour
                     gameData.equippedWand = 0;
                     panelSystem.OpenEquipmentPanel();
                     panelSystem.CloseInfoPanel();
+                    main.UpdateHeroStats();
                     i = maxSlotsEq;
 
                 }
@@ -220,6 +226,7 @@ public class Equipment : MonoBehaviour
                     gameData.equippedRobe = 0;
                     panelSystem.OpenEquipmentPanel();
                     panelSystem.CloseInfoPanel();
+                    main.UpdateHeroStats();
                     i = maxSlotsEq;
 
                 }
@@ -234,20 +241,20 @@ public class Equipment : MonoBehaviour
 
     public void SellItem()
     {
-        if(choosenInv == 0)
+        if(gameData.slotsEq[slotIndex] > 500)
         {
             itemSellPrice = items.selectedLoot.sellPrice;
         }
-        else if(choosenInv == 1)
-        {
-            itemSellPrice = items.selectedWand.sellPrice;
-        }
-        else if(choosenInv == 2)
+        else if(gameData.slotsEq[slotIndex] > 100)
         {
             itemSellPrice = items.selectedRobe.sellPrice;
         }
+        else
+        {
+            itemSellPrice = items.selectedWand.sellPrice;           
+        }
 
-            gameData.coinsBalance += items.selectedLoot.sellPrice;
+            gameData.coinsBalance += itemSellPrice;
             gameData.slotsEq[slotIndex] = 0;
             UpdateEquipment();
             main.UpdateBalance();

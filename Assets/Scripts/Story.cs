@@ -5,8 +5,11 @@ using UnityEngine;
 public class Story : MonoBehaviour
 {
     public GameData gameData;
+    //public Main main;
     public PanelSystem panelSystem;
     public TMPro.TMP_Text tutorialText;
+
+    public int coinsReward;
 
     private void Start()
     {
@@ -23,8 +26,10 @@ public class Story : MonoBehaviour
             panelSystem.OpenTutorialPanel();
             tutorialText.text = "Welcome \n in magic world young wizard. \n" 
              + "To start your journey you have to get your first wand."
-             + "Click on your Hero Icon, then inventory and equip your wand.";
+             + "Here is 1 coin for you to buy it in Shop"
+             + "Go to the shop, and buy Toplar Wand for 1 Coin.";
              gameData.storyTextNumber ++;
+             coinsReward = 1;
         }
 
         if(gameData.storyTextNumber == 1 && gameData.equippedWand == 1)
